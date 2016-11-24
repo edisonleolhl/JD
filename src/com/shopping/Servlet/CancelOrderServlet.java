@@ -2,6 +2,7 @@ package com.shopping.Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import com.shopping.models.Order;
 import com.shopping.models.User;
-import com.shopping.serveice.OrderService;
+import com.shopping.service.OrderService;
 
 public class CancelOrderServlet extends HttpServlet {
 	OrderService os = new OrderService();
@@ -34,13 +35,23 @@ public class CancelOrderServlet extends HttpServlet {
 		User user = (User) session.getAttribute("USER");
 		String OrderNumber = request.getParameter("OrderNumber");
 		PrintWriter out = response.getWriter();
-		if(os.cancelOrder(OrderNumber)){
-			System.out.println("取消成功！");
-		}else{
-			System.out.println("取消失败！");
+		try {
+			if(os.cancelOrder(OrderNumber)){
+				System.out.println("取消成功！");
+			}else{
+				System.out.println("取消失败！");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		List<Order> orderlist = new ArrayList<Order>();
-		orderlist = os.queryAllOrder(user);
+		try {
+			orderlist = os.queryAllOrder(user);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		request.setAttribute("ORDERLIST", orderlist);
 		request.getRequestDispatcher("/dingDan/myordercenterdiv.jsp").forward(request, response);
 		out.flush();

@@ -2,6 +2,7 @@ package com.shopping.Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,8 +17,8 @@ import javax.servlet.http.HttpSession;
 import com.shopping.models.Order;
 import com.shopping.models.ShoesOrder;
 import com.shopping.models.User;
-import com.shopping.serveice.OrderService;
-import com.shopping.serveice.ShoesOrderService;
+import com.shopping.service.OrderService;
+import com.shopping.service.ShoesOrderService;
 
 public class PayOrder extends HttpServlet {
 	
@@ -39,7 +40,7 @@ public class PayOrder extends HttpServlet {
 		SimpleDateFormat sdft=new SimpleDateFormat("yyyyMMddHHmmssSSS");
 		HttpSession session=request.getSession();
 		User user = (User) session.getAttribute("USER");
-		String UserAccout=user.getAccount();
+		String UserAccout=user.getUserAccount();
 		String address=request.getParameter("address");
 		String id[]=request.getParameterValues("getid");
 		System.out.println("用户"+UserAccout);
@@ -59,11 +60,19 @@ public class PayOrder extends HttpServlet {
 			System.out.println(i);
 			so=new ShoesOrder();
 			int id1=Integer.parseInt(i);
-		    so=sose.queryById(id1);
+		    try {
+				so=sose.queryById(id1);
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 		    for(int j = 0; j<seller.length;j++){
 		    	if(seller[j].equals(so.getSeller()))
 			    {
-			    	b=sose.UpdateOrderNumber(OrderNumber[j],id1);
+			    	try {
+						b=sose.UpdateOrderNumber(OrderNumber[j],id1);
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 			    }
 		    }
 		}
@@ -80,10 +89,18 @@ public class PayOrder extends HttpServlet {
 		{
 			int address1=Integer.parseInt(address);
 			String Seller=seller[i];
-     		Total=sose.SelectTotalPrice(OrderNumber[i]);
+     		try {
+				Total=sose.SelectTotalPrice(OrderNumber[i]);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
      	    order = new Order(OrderNumber[i],UserAccout,address1,Total,
     				Iscancel,Status,Ordertime,null,null,null,Seller);
-			f=os.addOrder(order);
+			try {
+				f=os.addOrder(order);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			list.add(OrderNumber[i]);
 		}
 		

@@ -2,6 +2,7 @@ package com.shopping.Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,9 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.shopping.models.ShoesOrder;
-import com.shopping.serveice.OrderService;
-import com.shopping.serveice.ShoesOrderService;
-import com.shopping.serveice.ShoesService;
+import com.shopping.service.OrderService;
+import com.shopping.service.ShoesOrderService;
+import com.shopping.service.ShoesService;
 
 public class PayOK extends HttpServlet {
 	
@@ -34,17 +35,29 @@ public class PayOK extends HttpServlet {
 		String []orders = OrderNum.split(",");
 		boolean b=false;
 		for (String string : orders) {
-			b=orse.updateByNum(string.trim());
+			try {
+				b=orse.updateByNum(string.trim());
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			
 		}
 		List<ShoesOrder> list=new ArrayList<ShoesOrder>();
 		boolean f=false;
 		for(String string : orders)
 		{
-			list=sose.selectAmount(string.trim());
+			try {
+				list=sose.selectAmount(string.trim());
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			for(ShoesOrder li:list)
 			{
-				f=shse.UpdateCount(li.getAmount(), li.getShoesId());
+				try {
+					f=shse.UpdateCount(li.getAmount(), li.getShoesId());
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		
@@ -53,7 +66,6 @@ public class PayOK extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doPost(req,resp);
 	}
 }

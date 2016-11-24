@@ -2,6 +2,7 @@ package com.shopping.Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,10 +14,8 @@ import javax.servlet.http.HttpSession;
 import com.shopping.models.Address;
 import com.shopping.models.User;
 import com.shopping.models.addr;
-import com.shopping.serveice.AddressService;
-import com.shopping.serveice.OrderService;
-import com.shopping.serveice.ShoesOrderService;
-import com.shopping.serveice.addrService;
+import com.shopping.service.AddressService;
+import com.shopping.service.addrService;
 
 public class AddAddress extends HttpServlet {
 
@@ -35,10 +34,18 @@ public class AddAddress extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out=response.getWriter();
 		
+		request.setAttribute("add", request.getAttribute("add"));
+		request.setAttribute("adds", request.getAttribute("adds"));
+		request.setAttribute("addr", request.getAttribute("addr"));
+		request.setAttribute("map", request.getAttribute("map"));
+		request.setAttribute("money", request.getAttribute("money"));
+		request.setAttribute("count", request.getAttribute("count"));
+		
+		
 		String name=(String)request.getParameter("name");
 		HttpSession session=request.getSession();
 		User user = (User) session.getAttribute("USER");
-		String useraccount=user.getAccount();
+		String useraccount=user.getUserAccount();
 		String provincial=(String)request.getParameter("provincial");
 		String city=(String)request.getParameter("city");
 		if(provincial=="0" ||provincial.equals("0"))
@@ -59,9 +66,9 @@ public class AddAddress extends HttpServlet {
 		String number=request.getParameter("number");
 		
 		Address ad=new Address ();
-		ad.setAddressid(0);
-		ad.setUseraccount(useraccount);
-		ad.setProvincial(provincial);
+		ad.setAddressId(0);
+		ad.setUserAccount(useraccount);
+		ad.setProvince(provincial);
 		ad.setCity(city);
 		ad.setArea(area);
 		ad.setReName(name);
@@ -74,23 +81,28 @@ public class AddAddress extends HttpServlet {
 		}
 		
 		
-		boolean b=addse.insert(ad);
-		if(b)
-		{
-			out.write("<script>alert('添加成功！');</script>");
-			List<addr> addr=adse.sele();
-			List<Address> add=addse.SelectAll(useraccount);
-			request.setAttribute("add", add);
-			request.setAttribute("addr", addr);
-			request.getRequestDispatcher("/dingDan/ddd.jsp").forward(request, response);
-		}else
-		{
-			out.write("<script>alert('添加失败！');</script>");
-			List<addr> addr=adse.sele();
-			List<Address> add=addse.SelectAll(useraccount);
-			request.setAttribute("add", add);
-			request.setAttribute("addr", addr);
-			request.getRequestDispatcher("/dingDan/ddd.jsp").forward(request, response);
+		try {
+			boolean b=addse.insert(ad);
+			if(b)
+			{
+				out.write("<script>alert('添加成功！');</script>");
+				List<addr> addr=adse.sele();
+				List<Address> add=addse.SelectAll(useraccount);
+				request.setAttribute("add", add);
+				request.setAttribute("addr", addr);
+				request.getRequestDispatcher("/dingDan/ddd.jsp").forward(request, response);
+			}else
+			{
+				out.write("<script>alert('添加失败！');</script>");
+				List<addr> addr=adse.sele();
+				List<Address> add=addse.SelectAll(useraccount);
+				request.setAttribute("add", add);
+				request.setAttribute("addr", addr);
+				request.getRequestDispatcher("/dingDan/ddd.jsp").forward(request, response);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

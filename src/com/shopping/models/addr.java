@@ -22,6 +22,10 @@ public class addr {
 	public void setArea(int area) {
 		this.area = area;
 	}
+	@Override
+	public String toString() {
+		return "addr [cid=" + cid + ", city=" + city + ", area=" + area + "]";
+	}
 	
 	
 }

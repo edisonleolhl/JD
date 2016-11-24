@@ -1,6 +1,6 @@
 <%@page import="com.shopping.models.PageBean"%>
 <%@page import="com.shopping.models.Shoes"%>
-<%@page import="com.shopping.serveice.ShoesService"%>
+<%@page import="com.shopping.service.ShoesService"%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -64,23 +64,23 @@ function goPage3(){
 		<!-- 第一排 第一个 -->
 
 		<c:forEach items="${page.data }" var="l">
-			<div class="fri"
+			<div class="fri" name="${ l.shoesId}"
 				style="width: 220px; height: 400px;  float: left; margin-top: 20px; margin-left: 15px;">
 
 				<div class="fria"
 					style="width: 220px; height: 220px; background-color: black; float: left; margin-top: 8px;">
-					<img src="ShoesImg/${l.shoesimg}" width="220px" height="220px" />
+					<img src="ShoesImg/${l.shoesImg}" width="220px" height="220px" />
 				</div>
-				<c:forEach items="${map }" var="ll">
+				<c:forEach items="${map.keySet() }" var="key">
 				
-					<c:if test="${ll.key==l.shoesid }">
-						<c:forEach items="${ll.value }" var="v">
-
-							<div class="frib"
-								style="border:1px gray solid;background-color: green; width: 30px; height: 30px; float: left; margin-top: 15px; margin-left: 4px;">
-								<img src="ShoesImg/${v}" width="30px" height="30px">
-							</div>
-
+					<c:if test="${key eq l.shoesId }">
+						<c:forEach items="${map.get(key) }" var="v">
+							<c:if test="${!empty v }">
+								<div class="frib"
+									style="border:1px gray solid;background-color: green; width: 30px; height: 30px; float: left; margin-top: 15px; margin-left: 4px;">
+									<img src="ShoesImg/${v}" width="30px" height="30px">
+								</div>
+							</c:if>
 						</c:forEach>
 					</c:if>
 				</c:forEach>
@@ -89,16 +89,16 @@ function goPage3(){
 				<div style="margin-right:150px;">
 
 					<strong style="margin-top: 50px; color:black;"> <span
-						style="font-size:23px;color:#E4393C;">￥${l.shoesprice }</span>
+						style="font-size:23px;color:#E4393C;">￥${l.shoesPrice }</span>
 					</strong>
 				</div>
 				<p style="margin-top: 5px; color: black;font-size:13px;">
-					<a href="<%=request.getContextPath() %>/Shoesinfo?shoesid=${l.shoesid}">${l.shoesname}</a>
+					<a href="<%=request.getContextPath() %>/Shoesinfo?shoesid=${l.shoesId}">${l.shoesName}</a>
 				</p>
 				<p style="margin-top: 5px; font-size: 13px;">
-					已有 <span style="color: blue">${l.shoesdesc}</span>人评价
+					已有 <span style="color: blue">${l.shoesAvailableAmount}</span>人评价
 				</p>
-				<p style="margin-top: 5px; font-size: 13px;">${l.shoesroom}</p>
+				<p style="margin-top: 5px; font-size: 13px;">${l.shoesSeller}</p>
 
 			</div>
 			

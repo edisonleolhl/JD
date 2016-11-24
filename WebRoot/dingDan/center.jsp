@@ -1,8 +1,8 @@
 <%@page import="com.shopping.models.Order"%>
 <%@page import="com.shopping.models.User"%>
-<%@page import="com.shopping.serveice.AddressService"%>
-<%@page import="com.shopping.serveice.OrderService"%>
-<%@page import="com.shopping.serveice.ShoesOrderService"%>
+<%@page import="com.shopping.service.AddressService"%>
+<%@page import="com.shopping.service.OrderService"%>
+<%@page import="com.shopping.service.ShoesOrderService"%>
 <%@page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="cc"%>
 <%

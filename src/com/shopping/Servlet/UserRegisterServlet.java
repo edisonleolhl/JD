@@ -2,6 +2,7 @@ package com.shopping.Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -13,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.shopping.models.User;
-import com.shopping.serveice.UserService;
+import com.shopping.service.UserService;
 
 
 @SuppressWarnings("serial")
@@ -35,11 +36,16 @@ public class UserRegisterServlet extends HttpServlet {
 		Date currentDate = new Date(System.currentTimeMillis());//得到当前时间
 		String str = sdf.format(currentDate);
 		
-		List<User> ul = us.loadUserList();
+		List<User> ul = null;
+		try {
+			ul = us.loadUserList();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
 		boolean isSameAccount = false;
 		boolean isSamePhone = false;
 		for(User temp:ul){
-			if(account.equals(temp.getAccount())){
+			if(account.equals(temp.getUserAccount())){
 				isSameAccount = true;
 			}
 		}
@@ -82,19 +88,23 @@ public class UserRegisterServlet extends HttpServlet {
 		}
 		
 		User user = new User();
-		user.setAccount(account);
-		user.setUserpwd(Userpwd);
+		user.setUserAccount(account);
+		user.setPassword(Userpwd);
 		user.setSex("男");
 		user.setPhone(phone);
-		user.setRegistime(str);
-		user.setBirth("2000-01-01 00:00:00");
-		user.setUserimg("default.PNG");
+		user.setRegistTime(str);
+		user.setBirthday("2000-01-01 00:00:00");
+		user.setUserImg("default.PNG");
 		//鑻ユ敞鍐屼笉鎴愬姛  缁欏嚭鎻愮ず 骞惰繑鍥炴敞鍐岄〉闈�
-		if(!us.register(user)){
-			out.write("<script>alert('娉ㄥ唽澶辫触锛佽閲嶆柊娉ㄥ唽锛�);history.go(-1);</script>");
-			out.flush();
-			out.close();
-			return;
+		try {
+			if(!us.register(user)){
+				out.write("<script>alert('娉ㄥ唽澶辫触锛佽閲嶆柊娉ㄥ唽锛�);history.go(-1);</script>");
+				out.flush();
+				out.close();
+				return;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}	
 		//鑻ユ敞鍐屾垚鍔�缁欏嚭鎻愮ず 骞惰繑鍥炴敞鍐岄〉闈�
 		HttpSession session=request.getSession();

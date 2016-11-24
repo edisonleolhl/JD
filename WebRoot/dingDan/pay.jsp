@@ -1,5 +1,5 @@
 <%@page import="com.shopping.models.User"%>
-<%@page import="com.shopping.serveice.OrderService"%>
+<%@page import="com.shopping.service.OrderService"%>
 <%@page import="com.shopping.models.Order"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
@@ -219,7 +219,7 @@ for(Order orq:orlist)
 }
 
 User user = (User) session.getAttribute("USER");
-String UserAccount = user.getAccount();
+String UserAccount = user.getUserAccount();
 
 %>
 <body>

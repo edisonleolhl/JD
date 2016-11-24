@@ -2,61 +2,61 @@ package com.shopping.models;
 
 public class Shoes {
 
-	private int Shoesid;
-	private String Shoesname;
-	private int Shoescount;
-	private double Shoesprice;
-	private int Shoesdesc;
-	private String Shoesimg;
-	private String Shoesbrand;
-	private String Shoesroom;
-	public int getShoesid() {
-		return Shoesid;
+	private int shoesId;
+	private String shoesName;
+	private int shoesAvailableAmount;
+	private double shoesPrice;
+	private int shoesCommentAmount;
+	private String shoesImg;
+	private String shoesBrand;
+	private String shoesSeller;
+	public int getShoesId() {
+		return shoesId;
 	}
-	public void setShoesid(int shoesid) {
-		Shoesid = shoesid;
+	public void setShoesId(int shoesId) {
+		this.shoesId = shoesId;
 	}
-	public String getShoesname() {
-		return Shoesname;
+	public String getShoesName() {
+		return shoesName;
 	}
-	public void setShoesname(String shoesname) {
-		Shoesname = shoesname;
+	public void setShoesName(String shoesName) {
+		this.shoesName = shoesName;
 	}
-	public int getShoescount() {
-		return Shoescount;
+	public int getShoesAvailableAmount() {
+		return shoesAvailableAmount;
 	}
-	public void setShoescount(int shoescount) {
-		Shoescount = shoescount;
+	public void setShoesAvailableAmount(int shoesAvailableAmount) {
+		this.shoesAvailableAmount = shoesAvailableAmount;
 	}
-	public double getShoesprice() {
-		return Shoesprice;
+	public double getShoesPrice() {
+		return shoesPrice;
 	}
-	public void setShoesprice(double shoesprice) {
-		Shoesprice = shoesprice;
+	public void setShoesPrice(double shoesPrice) {
+		this.shoesPrice = shoesPrice;
 	}
-	public int getShoesdesc() {
-		return Shoesdesc;
+	public int getShoesCommentAmount() {
+		return shoesCommentAmount;
 	}
-	public void setShoesdesc(int shoesdesc) {
-		Shoesdesc = shoesdesc;
+	public void setShoesCommentAmount(int shoesCommentAmount) {
+		this.shoesCommentAmount = shoesCommentAmount;
 	}
-	public String getShoesimg() {
-		return Shoesimg;
+	public String getShoesImg() {
+		return shoesImg;
 	}
-	public void setShoesimg(String shoesimg) {
-		Shoesimg = shoesimg;
+	public void setShoesImg(String shoesImg) {
+		this.shoesImg = shoesImg;
 	}
-	public String getShoesbrand() {
-		return Shoesbrand;
+	public String getShoesBrand() {
+		return shoesBrand;
 	}
-	public void setShoesbrand(String shoesbrand) {
-		Shoesbrand = shoesbrand;
+	public void setShoesBrand(String shoesBrand) {
+		this.shoesBrand = shoesBrand;
 	}
-	public String getShoesroom() {
-		return Shoesroom;
+	public String getShoesSeller() {
+		return shoesSeller;
 	}
-	public void setShoesroom(String shoesroom) {
-		Shoesroom = shoesroom;
+	public void setShoesSeller(String shoesSeller) {
+		this.shoesSeller = shoesSeller;
 	}
 	
 	

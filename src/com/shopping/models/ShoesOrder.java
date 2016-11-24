@@ -3,12 +3,12 @@ package com.shopping.models;
 public class ShoesOrder {
 	private int id;
 	private String OrderNumber;
-	private String UserAccount;
-	private int ShoesId;
-	private String ShoesName;
-	private double ShoesPrice;
-	private String ShoesColor;
-	private String Seller;
+	private String userAccount;
+	private int shoesId;
+	private String shoesName;
+	private double shoesPrice;
+	private String shoesColor;
+	private String seller;
 	private String Simg;
 	private int Amount;
 	private int Size;
@@ -24,42 +24,41 @@ public class ShoesOrder {
 	public void setOrderNumber(String orderNumber) {
 		OrderNumber = orderNumber;
 	}
-	
 	public String getUserAccount() {
-		return UserAccount;
+		return userAccount;
 	}
 	public void setUserAccount(String userAccount) {
-		UserAccount = userAccount;
+		this.userAccount = userAccount;
 	}
 	public int getShoesId() {
-		return ShoesId;
+		return shoesId;
 	}
 	public void setShoesId(int shoesId) {
-		ShoesId = shoesId;
+		this.shoesId = shoesId;
 	}
 	public String getShoesName() {
-		return ShoesName;
+		return shoesName;
 	}
 	public void setShoesName(String shoesName) {
-		ShoesName = shoesName;
+		this.shoesName = shoesName;
 	}
 	public double getShoesPrice() {
-		return ShoesPrice;
+		return shoesPrice;
 	}
 	public void setShoesPrice(double shoesPrice) {
-		ShoesPrice = shoesPrice;
+		this.shoesPrice = shoesPrice;
 	}
 	public String getShoesColor() {
-		return ShoesColor;
+		return shoesColor;
 	}
 	public void setShoesColor(String shoesColor) {
-		ShoesColor = shoesColor;
+		this.shoesColor = shoesColor;
 	}
 	public String getSeller() {
-		return Seller;
+		return seller;
 	}
 	public void setSeller(String seller) {
-		Seller = seller;
+		this.seller = seller;
 	}
 	public String getSimg() {
 		return Simg;
@@ -79,23 +78,34 @@ public class ShoesOrder {
 	public void setSize(int size) {
 		Size = size;
 	}
+	
 	public ShoesOrder(){
-		super();
+		
 	}
-	public ShoesOrder(String orderNumber, String userAccount, int shoesId,
-			String shoesName, double shoesPrice, String shoesColor,
-			String seller, String simg, int amount, int size) {
+	
+	public ShoesOrder(String orderNumber, String userAccount,
+			int shoesId, String shoesName, double shoesPrice,
+			String shoesColor, String seller, String simg, int amount, int size) {
 		super();
 		OrderNumber = orderNumber;
-		UserAccount = userAccount;
-		ShoesId = shoesId;
-		ShoesName = shoesName;
-		ShoesPrice = shoesPrice;
-		ShoesColor = shoesColor;
-		Seller = seller;
+		this.userAccount = userAccount;
+		this.shoesId = shoesId;
+		this.shoesName = shoesName;
+		this.shoesPrice = shoesPrice;
+		this.shoesColor = shoesColor;
+		this.seller = seller;
 		Simg = simg;
 		Amount = amount;
 		Size = size;
 	}
 	
+	@Override
+	public String toString() {
+		return "ShoesOrder [id=" + id + ", OrderNumber=" + OrderNumber
+				+ ", userAccount=" + userAccount + ", shoesId=" + shoesId
+				+ ", shoesName=" + shoesName + ", shoesPrice=" + shoesPrice
+				+ ", shoesColor=" + shoesColor + ", seller=" + seller
+				+ ", Simg=" + Simg + ", Amount=" + Amount + ", Size=" + Size
+				+ "]";
+	}
 }

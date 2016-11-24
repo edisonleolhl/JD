@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@page import="com.shopping.models.*"%>
-<%@page import="com.shopping.serveice.*"%>
+<%@page import="com.shopping.service.*"%>
 <%@page import="com.shopping.*"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -24,18 +24,18 @@
 	ShoesOrderService sos = new ShoesOrderService();
 	ShoesService ss = new ShoesService();
 
-	List<String> sellerList = sos.queryAllSeller(user.getAccount());
+	List<String> sellerList = sos.queryAllSeller(user.getUserAccount());
 	List<List<ShoesOrder>> shoesordertotallist = new ArrayList<List<ShoesOrder>>();
 	List<List<Integer>> shoescounttotallist = new ArrayList<List<Integer>>();
 
 	for(int i = 0; i < sellerList.size(); i++){
-		List<ShoesOrder> shoesorderlist = sos.queryShoesOrderBySeller(user.getAccount(), sellerList.get(i));
+		List<ShoesOrder> shoesorderlist = sos.queryShoesOrderBySeller(user.getUserAccount(), sellerList.get(i));
 		shoesordertotallist.add(shoesorderlist);
 		
 		List<Integer> shoescountlist = new ArrayList<Integer>();
 		for(ShoesOrder shoesorder : shoesorderlist){
-			Shoes shoes = ss.SelectlById(shoesorder.getShoesId());
-			int shoescount = shoes.getShoescount();
+			Shoes shoes = ss.SelectById(shoesorder.getShoesId());
+			int shoescount = shoes.getShoesAvailableAmount();
 			System.out.println("shoescount = " + shoescount);
 			shoescountlist.add(shoescount);
 		}
@@ -751,7 +751,7 @@ var co=0;
 								${shoesorder.shoesPrice*shoesorder.amount }</div>
 
 							<div class="c-3-8">
-								<a href="/JD/DelShoesOrderServlet?UserAccount=<%=user.getAccount()%>&ShoesOrderid=${shoesorder.id }">删除</a>
+								<a href="/JD/DelShoesOrderServlet?UserAccount=<%=user.getUserAccount()%>&ShoesOrderid=${shoesorder.id }">删除</a>
 							</div>
 							<%
 								shoesorderindex++;

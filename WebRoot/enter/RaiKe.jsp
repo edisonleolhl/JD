@@ -764,96 +764,96 @@ line-height:30px;
 				<div class="d-2-2">
 					<div class="d-2-3">
 						<div class="smallimgborder" id="smallimgborder" style="position:relative ">
-							<img id="smallimgborderimg" onMouseOut="magnifier.mout(event)" onMouseOver="magnifier.mover(event,this)" onMouseMove="magnifier.mmove(event,this)" src="ShoesImg/${ShoesImg.shoesimg1 }" width="400px" height="400px" />
+							<img id="smallimgborderimg" onMouseOut="magnifier.mout(event)" onMouseOver="magnifier.mover(event,this)" onMouseMove="magnifier.mmove(event,this)" src="ShoesImg/${ShoesImg.shoesImg1 }" width="400px" height="400px" />
 						</div>
-						<div id="largeimgborder" class="largeimgborder"><img id="largeimgborderimg" src="ShoesImg/${ShoesImg.shoesimg1 }"></div>
+						<div id="largeimgborder" class="largeimgborder"><img id="largeimgborderimg" src="ShoesImg/${ShoesImg.shoesImg1 }"></div>
 					</div>
-					 <c:if test="${ShoesImg.shoesimg1 != null }">
+					 <c:if test="${ShoesImg.shoesImg1 != null }">
 						<div class="d-2-4">
-							<img src="ShoesImg/${ShoesImg.shoesimg1 }" width="63px" height="63px" />
+							<img src="ShoesImg/${ShoesImg.shoesImg1 }" width="63px" height="63px" />
 						</div>
 						
 					</c:if>
-					<c:if test="${ShoesImg.shoesimg2 != null }">
+					<c:if test="${ShoesImg.shoesImg2 != null }">
 						<div class="d-2-4">
-							<img src="ShoesImg/${ShoesImg.shoesimg2 }" width="63px" height="63px" />
+							<img src="ShoesImg/${ShoesImg.shoesImg2 }" width="63px" height="63px" />
 						</div>
 					</c:if>
-					<c:if test="${ShoesImg.shoesimg3 != null }">
+					<c:if test="${ShoesImg.shoesImg3 != null }">
 						<div class="d-2-4">
-							<img src="ShoesImg/${ShoesImg.shoesimg3 }" width="63px" height="63px" />
+							<img src="ShoesImg/${ShoesImg.shoesImg3 }" width="63px" height="63px" />
 						</div>
 					</c:if>
-					<c:if test="${ShoesImg.shoesimg4 != null }">
+					<c:if test="${ShoesImg.shoesImg4 != null }">
 						<div class="d-2-4">
-							<img src="ShoesImg/${ShoesImg.shoesimg4 }" width="63px" height="63px" />
+							<img src="ShoesImg/${ShoesImg.shoesImg4 }" width="63px" height="63px" />
 						</div>
 					</c:if>
-					<c:if test="${ShoesImg.shoesimg5 != null }">
+					<c:if test="${ShoesImg.shoesImg5 != null }">
 						<div class="d-2-4">
-							<img src="ShoesImg/${ShoesImg.shoesimg5 }" width="63px" height="63px" />
+							<img src="ShoesImg/${ShoesImg.shoesImg5 }" width="63px" height="63px" />
 						</div>
 					</c:if>
-					<c:if test="${ShoesImg.shoesimg6 != null }">
+					<c:if test="${ShoesImg.shoesImg6 != null }">
 						<div class="d-2-4">
-							<img src="ShoesImg/${ShoesImg.shoesimg6 }" width="63px" height="63px" />
+							<img src="ShoesImg/${ShoesImg.shoesImg6 }" width="63px" height="63px" />
 						</div>
 					</c:if>
 				</div>
 				<div class="d-3-1">
 					<div id="d-3-2">
 					<Strong style="color:#666666; font-size:20px;float:left;">
-					${Shoes.shoesname }
+					${Shoes.shoesName }
 					</Strong>
 					
 					<div style="width:645px;height:90px;background-color:#EFEFEF;float:left;margin-top:5px;line-height:40px;">
-					<span style="color:gray;font-size:14px;">京 东 价</span>&nbsp;<span style="color:#E4393C;">￥</span><span style="font-size:25px;color:#E4393C;">${Shoes.shoesprice}</span>
+					<span style="color:gray;font-size:14px;">京 东 价</span>&nbsp;<span style="color:#E4393C;">￥</span><span style="font-size:25px;color:#E4393C;">${Shoes.shoesPrice}</span>
 					<a href="#" style="font-size:15px;margin-left:50px;">降价通知</a>
-					<span style="float:right;margin-right:10px;">累积评价  <a href="#">${Shoes.shoesdesc }</a></span><br>
+					<span style="float:right;margin-right:10px;">累积评价  <a href="#">${Shoes.shoesAvailableAmount }</a></span><br>
 					<span style="color:gray;font-size:14px;float:left;">促   &nbsp;  销</span>&nbsp;<div style="float:left;margin-left:20px;background-color:#F0999B;height:30px;line-height:30px;margin-top:5px;"><span style="font-size:14px;color:white;">手机专享价</span></div>
-					<span style="color:gray;font-size:14px;float:left;margin-left:5px;">￥${Shoes.shoesprice-50}</span><span style="float:left;margin-left:50px;font-size:14px;">去手机购买</span><span id="lianxi">
+					<span style="color:gray;font-size:14px;float:left;margin-left:5px;">￥${Shoes.shoesPrice-50}</span><span style="float:left;margin-left:50px;font-size:14px;">去手机购买</span><span id="lianxi">
 					<a href="http://wpa.qq.com/msgrd?v=3&uin=1279264643&site=qq&menu=yes">联系卖家</a>
 					</span>
 					</div>
 					<div style="line-height:30px;">
-					<span style="color:gray;font-size:14px;float:left;margin-top:5px;">配 送 至</span>&nbsp;<span style="font-size:13px;">北京朝阳区三环以内    &nbsp;&nbsp;&nbsp;店铺单笔订单不满388元，收运费10元 <br>&nbsp;<span style="color:gray;padding-top:5px;">由<span style="color:#E4393C;">${Shoes.shoesroom}</span> 发货，并提供售后服务。</span></span>
+					<span style="color:gray;font-size:14px;float:left;margin-top:5px;">配 送 至</span>&nbsp;<span style="font-size:13px;">北京朝阳区三环以内    &nbsp;&nbsp;&nbsp;店铺单笔订单不满388元，收运费10元 <br>&nbsp;<span style="color:gray;padding-top:5px;">由<span style="color:#E4393C;">${Shoes.shoesSeller}</span> 发货，并提供售后服务。</span></span>
 					</div>
 					<hr color="#EFEFEF">
 					<div>
 					<span style="color:gray;font-size:14px;float:left;">选择颜色</span>&nbsp;
-					 <c:if test="${ShoesImg.shoesimg1 != null && ShoesColor.color1 != null}">
-						<div class="choese" Style="float:left;margin-left:10px;border:1px solid gray;height:40px;" choese="${ShoesColor.color1}" choeseImg="${ShoesImg.shoesimg1 }" >
-							<img src="ShoesImg/${ShoesImg.shoesimg1 }" width="40px" height="40px" style="float:left;"/><span style="float:left;margin-left:5px;margin-top:11px;margin-right:5px;font-size:13px;color:gray;">${ShoesColor.color1}</span>
+					 <c:if test="${ShoesImg.shoesImg1 != null && ShoesColor.color1 != null}">
+						<div class="choese" Style="float:left;margin-left:10px;border:1px solid gray;height:40px;" choese="${ShoesColor.color1}" choeseImg="${ShoesImg.shoesImg1 }" >
+							<img src="ShoesImg/${ShoesImg.shoesImg1 }" width="40px" height="40px" style="float:left;"/><span style="float:left;margin-left:5px;margin-top:11px;margin-right:5px;font-size:13px;color:gray;">${ShoesColor.color1}</span>
 						</div>
 						</c:if>
 						
-						<c:if test="${ShoesImg.shoesimg2 != null && ShoesColor.color2 != null}">
-						<div class="choese" Style="float:left;margin-left:10px;border:1px solid gray;height:40px;"  choese="${ShoesColor.color2}" choeseImg="${ShoesImg.shoesimg2 }" >
-							<img src="ShoesImg/${ShoesImg.shoesimg2 }" width="40px" height="40px" style="float:left;"/><span style="float:left;margin-left:5px;margin-top:11px;margin-right:5px;font-size:13px;color:gray;">${ShoesColor.color2}</span>
+						<c:if test="${ShoesImg.shoesImg2 != null && ShoesColor.color2 != null}">
+						<div class="choese" Style="float:left;margin-left:10px;border:1px solid gray;height:40px;"  choese="${ShoesColor.color2}" choeseImg="${ShoesImg.shoesImg2 }" >
+							<img src="ShoesImg/${ShoesImg.shoesImg2 }" width="40px" height="40px" style="float:left;"/><span style="float:left;margin-left:5px;margin-top:11px;margin-right:5px;font-size:13px;color:gray;">${ShoesColor.color2}</span>
 						</div>
 						</c:if>
 						
-						<c:if test="${ShoesImg.shoesimg3 != null && ShoesColor.color3 != null}">
-						<div class="choese" Style="float:left;margin-left:10px;border:1px solid gray;height:40px;"  choese="${ShoesColor.color3}" choeseImg="${ShoesImg.shoesimg3 }" >
-							<img src="ShoesImg/${ShoesImg.shoesimg3 }" width="40px" height="40px" style="float:left;"/><span style="float:left;margin-left:5px;margin-top:11px;margin-right:5px;font-size:13px;color:gray;">${ShoesColor.color3}</span>
+						<c:if test="${ShoesImg.shoesImg3 != null && ShoesColor.color3 != null}">
+						<div class="choese" Style="float:left;margin-left:10px;border:1px solid gray;height:40px;"  choese="${ShoesColor.color3}" choeseImg="${ShoesImg.shoesImg3 }" >
+							<img src="ShoesImg/${ShoesImg.shoesImg3 }" width="40px" height="40px" style="float:left;"/><span style="float:left;margin-left:5px;margin-top:11px;margin-right:5px;font-size:13px;color:gray;">${ShoesColor.color3}</span>
 						</div>
 						</c:if>
 						
-						<c:if test="${ShoesImg.shoesimg4 != null && ShoesColor.color4 != null}">
-						<div class="choese" Style="float:left;margin-left:10px;border:1px solid gray;height:40px;"  choese="${ShoesColor.color4} " choeseImg="${ShoesImg.shoesimg4 }" >
-							<img src="ShoesImg/${ShoesImg.shoesimg4 }" width="40px" height="40px" style="float:left;"/><span style="float:left;margin-left:5px;margin-top:11px;margin-right:5px;font-size:13px;color:gray;">${ShoesColor.color4}</span>
+						<c:if test="${ShoesImg.shoesImg4 != null && ShoesColor.color4 != null}">
+						<div class="choese" Style="float:left;margin-left:10px;border:1px solid gray;height:40px;"  choese="${ShoesColor.color4} " choeseImg="${ShoesImg.shoesImg4 }" >
+							<img src="ShoesImg/${ShoesImg.shoesImg4 }" width="40px" height="40px" style="float:left;"/><span style="float:left;margin-left:5px;margin-top:11px;margin-right:5px;font-size:13px;color:gray;">${ShoesColor.color4}</span>
 						</div>
 						</c:if>
 						
-						<c:if test="${ShoesImg.shoesimg5 != null && ShoesColor.color5 != null}">
-						<div class="choese" Style="float:left;margin-left:10px;border:1px solid gray;height:40px;"  choese="${ShoesColor.color5}" choeseImg="${ShoesImg.shoesimg5}" >
-							<img src="ShoesImg/${ShoesImg.shoesimg5 }" width="40px" height="40px" style="float:left;"/><span style="float:left;margin-left:5px;margin-top:11px;margin-right:5px;font-size:13px;color:gray;">${ShoesColor.color5}</span>
+						<c:if test="${ShoesImg.shoesImg5 != null && ShoesColor.color5 != null}">
+						<div class="choese" Style="float:left;margin-left:10px;border:1px solid gray;height:40px;"  choese="${ShoesColor.color5}" choeseImg="${ShoesImg.shoesImg5}" >
+							<img src="ShoesImg/${ShoesImg.shoesImg5 }" width="40px" height="40px" style="float:left;"/><span style="float:left;margin-left:5px;margin-top:11px;margin-right:5px;font-size:13px;color:gray;">${ShoesColor.color5}</span>
 						</div>
 						</c:if>
 						
-						<c:if test="${ShoesImg.shoesimg6 != null && ShoesColor.color6 != null}">
-						<div class="choese" Style="float:left;margin-left:10px;border:1px solid gray;height:40px;"  choese="${ShoesColor.color6}" choeseImg="${ShoesImg.shoesimg6 }" >
-							<img src="ShoesImg/${ShoesImg.shoesimg6 }" width="40px" height="40px" style="float:left;"/><span style="float:left;margin-left:5px;margin-top:11px;margin-right:5px;font-size:13px;color:gray;">${ShoesColor.color6}</span>
+						<c:if test="${ShoesImg.shoesImg6 != null && ShoesColor.color6 != null}">
+						<div class="choese" Style="float:left;margin-left:10px;border:1px solid gray;height:40px;"  choese="${ShoesColor.color6}" choeseImg="${ShoesImg.shoesImg6 }" >
+							<img src="ShoesImg/${ShoesImg.shoesImg6 }" width="40px" height="40px" style="float:left;"/><span style="float:left;margin-left:5px;margin-top:11px;margin-right:5px;font-size:13px;color:gray;">${ShoesColor.color6}</span>
 						</div>
 						</c:if>
 
@@ -888,11 +888,11 @@ line-height:30px;
 					
 					<div style="float:left;border:0px solid gray; height:60px;width:140px;margin-left:20px;">
 						<form name="addtoshoppingcarform" action="<%=basePath %>AddToShoppingcar.action" method="post">
-							<input type="hidden" value="${Shoes.shoesid }" name="ShoesId">
-							<input type="hidden" value="${Shoes.shoesname }" name="ShoesName">
-							<input type="hidden" value="${Shoes.shoesprice }" name="Shoesprice">
+							<input type="hidden" value="${Shoes.shoesId }" name="ShoesId">
+							<input type="hidden" value="${Shoes.shoesName }" name="ShoesName">
+							<input type="hidden" value="${Shoes.shoesPrice }" name="Shoesprice">
 							<input type="hidden" value="choese" name="ShoesColor">
-							<input type="hidden" value="${Shoes.shoesroom}" name="Seller">
+							<input type="hidden" value="${Shoes.shoesSeller}" name="Seller">
 							<input type="hidden" value="choeseImg" name="Simg">
 							<input type="hidden" value="choeseSize" name="Size">
 							<input type="hidden" value="1" name="Amount">
@@ -901,11 +901,11 @@ line-height:30px;
 					</div>
 					<div style="float:left;border:0px solid gray; height:60px;width:100px;margin-left:20px;">
 						<form name="directpayform" action="<%=basePath %>directPay.action" method="post">
-							<input type="hidden" value="${Shoes.shoesid }" name="ShoesId">
-							<input type="hidden" value="${Shoes.shoesname }" name="ShoesName">
-							<input type="hidden" value="${Shoes.shoesprice }" name="Shoesprice">
+							<input type="hidden" value="${Shoes.shoesId }" name="ShoesId">
+							<input type="hidden" value="${Shoes.shoesName }" name="ShoesName">
+							<input type="hidden" value="${Shoes.shoesPrice }" name="Shoesprice">
 							<input type="hidden" value="choese" name="ShoesColor">
-							<input type="hidden" value="${Shoes.shoesroom}" name="Seller">
+							<input type="hidden" value="${Shoes.shoesSeller}" name="Seller">
 							<input type="hidden" value="choeseImg" name="Simg">
 							<input type="hidden" value="choeseSize" name="Size">
 							<input type="hidden" value="1" name="Amount">
@@ -962,11 +962,11 @@ line-height:30px;
 							<a class="f-1-3">商品评价</a>
 						</div>
 							<div class="f-2-1" style="font-size:14px;">全部评价(<span style="color:red;">${count}</span>)</div>
-							<c:forEach items="${GoodAppraise}" var="g">
+							<c:forEach items="${Comment}" var="comment">
 							<div style="float:left;border-bottom:1px solid gray;height:100px;width:950px;line-height:30px;">
-							<div style="color:gray;font-size:13px;float:left;margin-left:100px;">&nbsp;${g.gooddesc }</div><br>
-							<div style="float:left;color:gray;font-size:13px;margin-left:20px;">${g.goodtime }</div>
-							<div style="float:right;color:gray;font-size:13px;margin-right:30px;">${g.useraccount }</div>
+							<div style="color:gray;font-size:13px;float:left;margin-left:100px;">&nbsp;${comment.commentDescription }</div><br>
+							<div style="float:left;color:gray;font-size:13px;margin-left:20px;">${comment.commentTime }</div>
+							<div style="float:right;color:gray;font-size:13px;margin-right:30px;">${comment.userAccount }</div>
 							<div style="float:right;color:green;font-size:13px;margin-top:20px;margin-right:-15px;">金牌会员</div>
 							<div style="float:right;color:gray;font-size:13px;margin-top:35px;margin-right:-75px;">来自京东客户端</div>
 							</div>

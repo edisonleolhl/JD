@@ -1,33 +1,33 @@
 package com.shopping.models;
 
-
-
 public class User {
-	private int UserId;
-	private String Userpwd;
-	private String account;
+	
+	private int userId;
+	private String password;
+	private String userAccount;
 	private String sex;
-	private String registime;
-	private String birth;
+	private String registTime;
+	private String birthday;
 	private String phone;
-	private String Userimg;
+	private String userImg;
+	
 	public int getUserId() {
-		return UserId;
+		return userId;
 	}
 	public void setUserId(int userId) {
-		UserId = userId;
+		this.userId = userId;
 	}
-	public String getUserpwd() {
-		return Userpwd;
+	public String getPassword() {
+		return password;
 	}
-	public void setUserpwd(String userpwd) {
-		Userpwd = userpwd;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public String getAccount() {
-		return account;
+	public String getUserAccount() {
+		return userAccount;
 	}
-	public void setAccount(String account) {
-		this.account = account;
+	public void setUserAccount(String userAccount) {
+		this.userAccount = userAccount;
 	}
 	public String getSex() {
 		return sex;
@@ -35,17 +35,17 @@ public class User {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-	public String getRegistime() {
-		return registime;
+	public String getRegistTime() {
+		return registTime;
 	}
-	public void setRegistime(String registime) {
-		this.registime = registime;
+	public void setRegistTime(String registTime) {
+		this.registTime = registTime;
 	}
-	public String getBirth() {
-		return birth;
+	public String getBirthday() {
+		return birthday;
 	}
-	public void setBirth(String birth) {
-		this.birth = birth;
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
 	}
 	public String getPhone() {
 		return phone;
@@ -53,11 +53,19 @@ public class User {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getUserimg() {
-		return Userimg;
+	public String getUserImg() {
+		return userImg;
 	}
-	public void setUserimg(String userimg) {
-		Userimg = userimg;
+	public void setUserImg(String userImg) {
+		this.userImg = userImg;
+	}
+	
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", password=" + password
+				+ ", userAccount=" + userAccount + ", sex=" + sex
+				+ ", registTime=" + registTime + ", birthday=" + birthday
+				+ ", phone=" + phone + ", userImg=" + userImg + "]";
 	}
 
 }

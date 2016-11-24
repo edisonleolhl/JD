@@ -2,6 +2,7 @@ package com.shopping.Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,10 +19,10 @@ import com.shopping.models.Order;
 import com.shopping.models.ShoesOrder;
 import com.shopping.models.User;
 import com.shopping.models.addr;
-import com.shopping.serveice.AddressService;
-import com.shopping.serveice.OrderService;
-import com.shopping.serveice.ShoesOrderService;
-import com.shopping.serveice.addrService;
+import com.shopping.service.AddressService;
+import com.shopping.service.OrderService;
+import com.shopping.service.ShoesOrderService;
+import com.shopping.service.addrService;
 
 public class DirectPayServlet extends HttpServlet {
 	OrderService os = new OrderService();
@@ -45,7 +46,7 @@ public class DirectPayServlet extends HttpServlet {
 			out.close();
 			return;
 		}else{
-			UserAccount = user.getAccount();
+			UserAccount = user.getUserAccount();
 			System.out.println("UserAccount = " + UserAccount);
 		}
 		
@@ -89,27 +90,35 @@ public class DirectPayServlet extends HttpServlet {
 		double TotalPrice = Shoesprice*Amount;
 		Order order = new Order(OrderNumber,UserAccount,address,TotalPrice,
 				Iscancel,Status,Ordertime,null,null,null,Seller);
-		if(os.addOrder(order)){
-			System.out.println("success？？");
-			request.setAttribute("ORDER", order);
-		}else{
-			System.out.println("fail!");
-			out.write("<script>alert('fail!');history.go(-1);</script>");
-			out.flush();
-			out.close();
-			return;
+		try {
+			if(os.addOrder(order)){
+				System.out.println("success？？");
+				request.setAttribute("ORDER", order);
+			}else{
+				System.out.println("fail!");
+				out.write("<script>alert('fail!');history.go(-1);</script>");
+				out.flush();
+				out.close();
+				return;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		ShoesOrder shoesorder = new ShoesOrder(OrderNumber,UserAccount,ShoesId,
 				ShoesName,Shoesprice,ShoesColor,Seller,Simg,Amount,Size);
-		if(sos.addShoesOrder(shoesorder)){
-			System.out.println("success??");
-			request.setAttribute("SHOESORDER", shoesorder);
-		}else{
-			System.out.println("fail!");
-			out.write("<script>alert('fail!');history.go(-1);</script>");
-			out.flush();
-			out.close();
-			return;
+		try {
+			if(sos.addShoesOrder(shoesorder)){
+				System.out.println("success??");
+				request.setAttribute("SHOESORDER", shoesorder);
+			}else{
+				System.out.println("fail!");
+				out.write("<script>alert('fail!');history.go(-1);</script>");
+				out.flush();
+				out.close();
+				return;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	
 		List<String> list=new ArrayList<String>();

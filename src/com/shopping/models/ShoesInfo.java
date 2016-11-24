@@ -67,5 +67,14 @@ public class ShoesInfo {
 	public void setShoesInfoImg8(String shoesInfoImg8) {
 		ShoesInfoImg8 = shoesInfoImg8;
 	}
+	@Override
+	public String toString() {
+		return "ShoesInfo [ShoesId=" + ShoesId + ", ShoesInfoImg1="
+				+ ShoesInfoImg1 + ", ShoesInfoImg2=" + ShoesInfoImg2
+				+ ", ShoesInfoImg3=" + ShoesInfoImg3 + ", ShoesInfoImg4="
+				+ ShoesInfoImg4 + ", ShoesInfoImg5=" + ShoesInfoImg5
+				+ ", ShoesInfoImg6=" + ShoesInfoImg6 + ", ShoesInfoImg7="
+				+ ShoesInfoImg7 + ", ShoesInfoImg8=" + ShoesInfoImg8 + "]";
+	}
 	
 }

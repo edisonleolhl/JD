@@ -3,13 +3,14 @@ package com.shopping.models;
 public class ShoesImg {
 
 	private int id;
-	private int ShoesId;
-	private String Shoesimg1;
-	private String Shoesimg2;
-	private String Shoesimg3;
-	private String Shoesimg4;
-	private String Shoesimg5;
-	private String Shoesimg6;
+	private int shoesId;
+	private String shoesImg1;
+	private String shoesImg2;
+	private String shoesImg3;
+	private String shoesImg4;
+	private String shoesImg5;
+	private String shoesImg6;
+	
 	public int getId() {
 		return id;
 	}
@@ -17,47 +18,53 @@ public class ShoesImg {
 		this.id = id;
 	}
 	public int getShoesId() {
-		return ShoesId;
+		return shoesId;
 	}
 	public void setShoesId(int shoesId) {
-		ShoesId = shoesId;
+		this.shoesId = shoesId;
 	}
-	public String getShoesimg1() {
-		return Shoesimg1;
+	public String getShoesImg1() {
+		return shoesImg1;
 	}
-	public void setShoesimg1(String shoesimg1) {
-		Shoesimg1 = shoesimg1;
+	public void setShoesImg1(String shoesImg1) {
+		this.shoesImg1 = shoesImg1;
 	}
-	public String getShoesimg2() {
-		return Shoesimg2;
+	public String getShoesImg2() {
+		return shoesImg2;
 	}
-	public void setShoesimg2(String shoesimg2) {
-		Shoesimg2 = shoesimg2;
+	public void setShoesImg2(String shoesImg2) {
+		this.shoesImg2 = shoesImg2;
 	}
-	public String getShoesimg3() {
-		return Shoesimg3;
+	public String getShoesImg3() {
+		return shoesImg3;
 	}
-	public void setShoesimg3(String shoesimg3) {
-		Shoesimg3 = shoesimg3;
+	public void setShoesImg3(String shoesImg3) {
+		this.shoesImg3 = shoesImg3;
 	}
-	public String getShoesimg4() {
-		return Shoesimg4;
+	public String getShoesImg4() {
+		return shoesImg4;
 	}
-	public void setShoesimg4(String shoesimg4) {
-		Shoesimg4 = shoesimg4;
+	public void setShoesImg4(String shoesImg4) {
+		this.shoesImg4 = shoesImg4;
 	}
-	public String getShoesimg5() {
-		return Shoesimg5;
+	public String getShoesImg5() {
+		return shoesImg5;
 	}
-	public void setShoesimg5(String shoesimg5) {
-		Shoesimg5 = shoesimg5;
+	public void setShoesImg5(String shoesImg5) {
+		this.shoesImg5 = shoesImg5;
 	}
-	public String getShoesimg6() {
-		return Shoesimg6;
+	public String getShoesImg6() {
+		return shoesImg6;
 	}
-	public void setShoesimg6(String shoesimg6) {
-		Shoesimg6 = shoesimg6;
+	public void setShoesImg6(String shoesImg6) {
+		this.shoesImg6 = shoesImg6;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "ShoesImg [id=" + id + ", shoesId=" + shoesId + ", shoesImg1="
+				+ shoesImg1 + ", shoesImg2=" + shoesImg2 + ", shoesImg3="
+				+ shoesImg3 + ", shoesImg4=" + shoesImg4 + ", shoesImg5="
+				+ shoesImg5 + ", shoesImg6=" + shoesImg6 + "]";
+	}
 }

@@ -10,7 +10,7 @@
 	User userH = (User) session.getAttribute("USER");
 	String userimgH = "default.PNG";
 	if(userH!=null){
-		userimgH = userH.getUserimg();
+		userimgH = userH.getUserImg();
 	}
 %>
 <co:set var="isNotLogin" value="${empty sessionScope.USER}" />
@@ -644,7 +644,7 @@ dd {
 						</co:if>
 						<co:if test="${!isNotLogin }">
 							<li>
-								<span class="yanse1"><%=userH.getAccount() %>，你好！</span> |    
+								<span class="yanse1"><%=userH.getUserAccount() %>，你好！</span> |    
 							<li>
 								<span class="yanse1"><a href="/JD/loginout.action">注销</a></span> |
 							</li>
@@ -681,7 +681,7 @@ dd {
 									<dt>
 										<img src="../dengluimg/dengru/<%=userimgH %>"
 											align="absmiddle" width="90px" height="90px">
-										<span class="yanse" style="font-weight: bold;">你好，${sessionScope.USER.account}</span>
+										<span class="yanse" style="font-weight: bold;">你好，${sessionScope.USER.userAccount}</span>
 									</dt>
 								</co:if>
 								<dd class="dd15 yanse">

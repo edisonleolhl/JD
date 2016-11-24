@@ -2,13 +2,14 @@ package com.shopping.Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.shopping.serveice.ShoesOrderService;
+import com.shopping.service.ShoesOrderService;
 
 public class ModifyShoesOrderAmountServlet extends HttpServlet {
 	ShoesOrderService sos = new ShoesOrderService();
@@ -32,10 +33,14 @@ public class ModifyShoesOrderAmountServlet extends HttpServlet {
 		System.out.println("id = " + id);
 		int newAmount = Integer.parseInt(request.getParameter("newAmount"));
 		System.out.println("newAmount = " + newAmount);
-		if(sos.modifyShoesOrderAmount(newAmount, id)){
-			System.out.println("modifyshoesorderamount success!");
-		}else{
-			System.out.println("modifyshoesorderamount fail!");
+		try {
+			if(sos.modifyShoesOrderAmount(newAmount, id)){
+				System.out.println("modifyshoesorderamount success!");
+			}else{
+				System.out.println("modifyshoesorderamount fail!");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 

@@ -4,11 +4,11 @@ import java.util.List;
 
 public class Order {
 	private String OrderNumber;
-	private String UserAccount;
+	private String userAccount;
 	private int address;
-	private double TotalPrice;
-	private String Iscancel;
-	private String Status;
+	private double totalPrice;
+	private String isCancel;
+	private String status;
 	private String Ordertime;
 	private String Paytime;
 	private String Sendtime;
@@ -23,10 +23,10 @@ public class Order {
 		OrderNumber = orderNumber;
 	}
 	public String getUserAccount() {
-		return UserAccount;
+		return userAccount;
 	}
 	public void setUserAccount(String userAccount) {
-		UserAccount = userAccount;
+		this.userAccount = userAccount;
 	}
 	public int getAddress() {
 		return address;
@@ -35,23 +35,22 @@ public class Order {
 		this.address = address;
 	}
 	public double getTotalPrice() {
-		return TotalPrice;
+		return totalPrice;
 	}
 	public void setTotalPrice(double totalPrice) {
-		TotalPrice = totalPrice;
+		this.totalPrice = totalPrice;
 	}
-	
+	public String getIsCancel() {
+		return isCancel;
+	}
+	public void setIsCancel(String isCancel) {
+		this.isCancel = isCancel;
+	}
 	public String getStatus() {
-		return Status;
+		return status;
 	}
 	public void setStatus(String status) {
-		Status = status;
-	}
-	public String getIscancel() {
-		return Iscancel;
-	}
-	public void setIscancel(String iscancel) {
-		Iscancel = iscancel;
+		this.status = status;
 	}
 	public String getOrdertime() {
 		return Ordertime;
@@ -77,39 +76,38 @@ public class Order {
 	public void setReceivetime(String receivetime) {
 		Receivetime = receivetime;
 	}
-	public void setShoesOrderList(List<ShoesOrder> shoesorderlist ){
-		ShoesOrderList = shoesorderlist;
-	}
-	public List<ShoesOrder> getShoesOrderList(){
-		return ShoesOrderList;
-	}
-	
 	public String getSeller() {
 		return Seller;
 	}
 	public void setSeller(String seller) {
 		Seller = seller;
 	}
-	public Order(){
-		super();
+	public List<ShoesOrder> getShoesOrderList() {
+		return ShoesOrderList;
 	}
+	public void setShoesOrderList(List<ShoesOrder> shoesOrderList) {
+		ShoesOrderList = shoesOrderList;
+	}
+	
+	public Order(){
+		
+	}
+	
 	public Order(String orderNumber, String userAccount, int address,
-			double totalPrice, String iscancel, String status,
+			double totalPrice, String isCancel, String status,
 			String ordertime, String paytime, String sendtime,
 			String receivetime, String seller) {
 		super();
 		OrderNumber = orderNumber;
-		UserAccount = userAccount;
+		this.userAccount = userAccount;
 		this.address = address;
-		TotalPrice = totalPrice;
-		Iscancel = iscancel;
-		Status = status;
+		this.totalPrice = totalPrice;
+		this.isCancel = isCancel;
+		this.status = status;
 		Ordertime = ordertime;
 		Paytime = paytime;
 		Sendtime = sendtime;
 		Receivetime = receivetime;
 		Seller = seller;
 	}
-	
-	
 }

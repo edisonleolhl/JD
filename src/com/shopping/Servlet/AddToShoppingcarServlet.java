@@ -2,6 +2,7 @@ package com.shopping.Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,8 +14,8 @@ import javax.servlet.http.HttpSession;
 import com.shopping.models.Order;
 import com.shopping.models.ShoesOrder;
 import com.shopping.models.User;
-import com.shopping.serveice.OrderService;
-import com.shopping.serveice.ShoesOrderService;
+import com.shopping.service.OrderService;
+import com.shopping.service.ShoesOrderService;
 
 public class AddToShoppingcarServlet extends HttpServlet {
 	OrderService os = new OrderService();
@@ -46,7 +47,7 @@ public class AddToShoppingcarServlet extends HttpServlet {
 			out.close();
 			return;
 		}else{
-			UserAccount = user.getAccount();
+			UserAccount = user.getUserAccount();
 		}
 		
 		//when add to shopping car,the 'OrderNumber' is null
@@ -75,12 +76,21 @@ public class AddToShoppingcarServlet extends HttpServlet {
 		int Size = Integer.parseInt(request.getParameter("Size"));
 		
 		//check if there is a same shoesorder in the shoppingcar
-		List<ShoesOrder> sol = sos.queryShoesOrderByUserAccount(UserAccount);
+		List<ShoesOrder> sol = null;;
+		try {
+			sol = sos.queryShoesOrderByUserAccount(UserAccount);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
 		System.out.println("sol.size() = " + sol.size());
 		for(ShoesOrder shoesordertemp : sol){
 			if(ShoesId == shoesordertemp.getShoesId() && ShoesColor.equals(shoesordertemp.getShoesColor()) && Size == shoesordertemp.getSize()){
 				System.out.println("这是用来调试的语句");
-				sos.incShoesOrderAmount(Amount, shoesordertemp.getId());
+				try {
+					sos.incShoesOrderAmount(Amount, shoesordertemp.getId());
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 				out.write("<script>history.go(-1);</script>");
 				out.flush();
 				out.close();
@@ -90,17 +100,21 @@ public class AddToShoppingcarServlet extends HttpServlet {
 		
 		ShoesOrder shoesorder = new ShoesOrder(OrderNumber,UserAccount,ShoesId,
 				ShoesName,Shoesprice,ShoesColor,Seller,Simg,Amount,Size);
-		if(sos.addShoesOrder(shoesorder)){
-			out.write("<script>history.go(-1);</script>");
-			out.flush();
-			out.close();
-			return;
-		}else{
-			System.out.println("fail!");
-			out.write("<script>history.go(-1);</script>");
-			out.flush();
-			out.close();
-			return;
+		try {
+			if(sos.addShoesOrder(shoesorder)){
+				out.write("<script>history.go(-1);</script>");
+				out.flush();
+				out.close();
+				return;
+			}else{
+				System.out.println("fail!");
+				out.write("<script>history.go(-1);</script>");
+				out.flush();
+				out.close();
+				return;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 
 	}

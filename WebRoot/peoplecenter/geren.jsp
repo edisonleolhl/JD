@@ -1,5 +1,5 @@
 <%@page import="com.shopping.models.User"%>
-<%@ page import="com.shopping.serveice.OrderService" %>
+<%@ page import="com.shopping.service.OrderService" %>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="cc"%>
 
@@ -19,7 +19,7 @@
    	<%
    		return;
    	}
-	String userimgC = userC.getUserimg();
+	String userimgC = userC.getUserImg();
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -400,7 +400,7 @@
 							style="margin-left: 20px; margin-top: 50px;">
 
 						<div class="username" style="width:80px;height:30px;margin-left:150px;margin-top:-100px;">
-						<%=userC.getAccount() %></div>
+						<%=userC.getUserAccount() %></div>
    <div class="username" style="width:140px;height:80px;margin-left:150px;">
              <a href="#" style="font-size:13px;color:blue;text-decoration:none">铜牌会员</a>
              &nbsp;

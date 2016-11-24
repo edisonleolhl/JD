@@ -2,13 +2,14 @@ package com.shopping.models;
 
 public class ShoesSize {
 
-	private int Id;
+	private int sizeId;
 	private int shoesSize;
-	public int getId() {
-		return Id;
+	
+	public int getSizeId() {
+		return sizeId;
 	}
-	public void setId(int id) {
-		Id = id;
+	public void setSizeId(int sizeId) {
+		this.sizeId = sizeId;
 	}
 	public int getShoesSize() {
 		return shoesSize;
@@ -17,5 +18,8 @@ public class ShoesSize {
 		this.shoesSize = shoesSize;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "ShoesSize [sizeId=" + sizeId + ", shoesSize=" + shoesSize + "]";
+	}
 }

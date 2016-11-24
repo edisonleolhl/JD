@@ -2,6 +2,7 @@ package com.shopping.Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,9 +18,9 @@ import com.shopping.models.Address;
 import com.shopping.models.ShoesOrder;
 import com.shopping.models.User;
 import com.shopping.models.addr;
-import com.shopping.serveice.AddressService;
-import com.shopping.serveice.ShoesOrderService;
-import com.shopping.serveice.addrService;
+import com.shopping.service.AddressService;
+import com.shopping.service.ShoesOrderService;
+import com.shopping.service.addrService;
 
 public class SubmitOrderServlet extends HttpServlet {
 
@@ -63,19 +64,35 @@ public class SubmitOrderServlet extends HttpServlet {
 		
 		User user = (User) session.getAttribute("USER");
 		
-		Map<String,List<ShoesOrder>> map =sose.queryOrderByUid(user.getAccount(),ords);
+		Map<String, List<ShoesOrder>> map = null;
+		try {
+			map = sose.queryOrderByUid(user.getUserAccount(),ords);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		for (String string : strs) 
 		{
 			so=new ShoesOrder();
 			int i=Integer.parseInt(string);
-		    so=sose.queryById(i);
+		    try {
+				so=sose.queryById(i);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		    count=count+so.getAmount();
 		    money=money+(so.getShoesPrice()*so.getAmount());
 		}
-		Address adds=addse.SelectAll(user.getAccount()).get(0);
-		List<addr> addr=adse.sele();
-		List<Address> add=addse.SelectAll(user.getAccount());
+		Address adds = null;
+		List<addr> addr = null;
+		List<Address> add = null;
+		try {
+			adds = addse.SelectAll(user.getUserAccount()).get(0);
+			addr = adse.sele();
+			add = addse.SelectAll(user.getUserAccount());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		request.setAttribute("add", add);
 		request.setAttribute("adds", adds);
 		request.setAttribute("addr", addr);

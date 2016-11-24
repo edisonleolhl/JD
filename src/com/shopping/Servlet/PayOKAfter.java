@@ -2,6 +2,7 @@ package com.shopping.Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.shopping.serveice.OrderService;
+import com.shopping.service.OrderService;
 
 
 public class PayOKAfter extends HttpServlet{
@@ -18,13 +19,11 @@ public class PayOKAfter extends HttpServlet{
 	OrderService orse=new OrderService();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doPost(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		resp.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html;charset=utf-8");		
 		req.setCharacterEncoding("utf-8");
@@ -51,7 +50,12 @@ public class PayOKAfter extends HttpServlet{
 		for (String string : orders) 
 		{
 			System.out.println(string);
-			int count=orse.selectByNum(string.trim()).size();
+			int count = 0;
+			try {
+				count = orse.selectByNum(string.trim()).size();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			if(count==1){
 			list.add(count);
 			}

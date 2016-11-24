@@ -2,6 +2,7 @@ package com.shopping.Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -11,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.shopping.models.PageBean;
-import com.shopping.serveice.PageShoesService;
-import com.shopping.serveice.ShoesImgService;
+import com.shopping.service.PageShoesService;
+import com.shopping.service.ShoesImgService;
 
 
 public class Myservlet extends HttpServlet {
@@ -44,10 +45,18 @@ public class Myservlet extends HttpServlet {
 			pageSize = Integer.parseInt(req.getParameter("pageSize"));
 		}
 		
-		PageBean page = new PageShoesService().queryByPage(pageSize, currentPage,input);
-		//Integer = shoesId
-		//
-		Map<Integer,List<String>> map = sis.queryAllLittleImg();
+		PageBean page = null;
+		try {
+			page = new PageShoesService().queryByPage(pageSize, currentPage,input);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		Map<Integer, List<String>> map = null;
+		try {
+			map = sis.queryAllLittleImg();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		req.setAttribute("page", page);
 		req.setAttribute("map", map);
 	    req.setAttribute("input", input);
