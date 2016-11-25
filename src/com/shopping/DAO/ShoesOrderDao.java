@@ -87,28 +87,28 @@ public class ShoesOrderDao{
 		return queryRunner.query(sql, new BeanHandler<ShoesOrder>(ShoesOrder.class), params);
 	}
 	
-	public List<String> querySellerByUid(String uid,String ords) throws SQLException{
+	public List<String> querySellerByUid(String userAccount,String OrderNumber) throws SQLException{
 		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
-		String sql = "select Seller from ShoesOrder where userAccount =? and id in "
-			 + ords	+ " group by Seller";
-		Object[] params = {uid};
+		String sql = "select Seller from ShoesOrder where userAccount = ? and id in "
+			 + OrderNumber	+ " group by Seller";
+		Object[] params = {userAccount};
 		return queryRunner.query(sql, new ColumnListHandler<String>("Seller"), params);
 	}
 	
 	
-	public List<ShoesOrder> queryOrderBySeller(String seller,String uid,String ords) throws SQLException{
+	public List<ShoesOrder> queryOrderBySeller(String seller,String userAccount,String OrderNumber) throws SQLException{
 		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
-		String sql = "select * from ShoesOrder where Seller=? and UserAccount = ? and id in "
-				+ ords;
-		Object[] params = {uid};
+		String sql = "select * from ShoesOrder where Seller = ? and userAccount = ? and id in "
+				+ OrderNumber;
+		Object[] params = {seller, userAccount};
 		return queryRunner.query(sql, new BeanListHandler<ShoesOrder>(ShoesOrder.class), params);
 	}
 	
-	public boolean UpdateOrderNumber(String num,int id) throws SQLException
+	public boolean UpdateOrderNumber(String OrderNumber,int id) throws SQLException
 	{
 		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
 		String sql="update ShoesOrder set OrderNumber = ? where id = ?";
-		Object[] params = {num, id};
+		Object[] params = {OrderNumber, id};
 		if(queryRunner.update(sql, params) == 1){
 			return true;
 		}
@@ -117,19 +117,21 @@ public class ShoesOrderDao{
 		}		
 	}
 	
-	public double SelectTotalPrice(String num) throws SQLException
+	public double SelectTotalPrice(String OrderNumber) throws SQLException
 	{
 		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
 		String sql="select SUM(ShoesPrice*Amount) from ShoesOrder where OrderNumber = ?";
-		Object[] params = {num};
-		return queryRunner.query(sql, new ScalarHandler<Double>(1), params); 
+		Object[] params = {OrderNumber};
+		//解决类型转换错误：java.math.BigDecimal cannot be cast to java.lang.String
+		Object  ob = queryRunner.query(sql, new ScalarHandler<Double>(1), params);
+		return Double.parseDouble(ob.toString()); 
 	}
 	
-	public List<ShoesOrder> selectAmount(String num) throws SQLException
+	public List<ShoesOrder> selectAmount(String OrderNumber) throws SQLException
 	{
 		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
 		String sql="select * from ShoesOrder where OrderNumber = ?";
-		Object[] params = {num};
+		Object[] params = {OrderNumber};
 		return queryRunner.query(sql, new BeanListHandler<ShoesOrder>(ShoesOrder.class), params); 
 	}
 }

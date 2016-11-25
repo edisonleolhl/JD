@@ -3,8 +3,6 @@ package com.shopping.Servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -55,18 +53,18 @@ public class SubmitOrderServlet extends HttpServlet {
 			out.close();
 		}
 
-		String ords = "(";
+		String OrderNumber = "(";
 		for (String string : strs) {
-			ords+= string + ",";
+			OrderNumber+= string + ",";
 		}
-		ords = ords.substring(0,ords.length()-1);
-		ords+=")";
+		OrderNumber = OrderNumber.substring(0,OrderNumber.length()-1);
+		OrderNumber+=")";
 		
 		User user = (User) session.getAttribute("USER");
 		
 		Map<String, List<ShoesOrder>> map = null;
 		try {
-			map = sose.queryOrderByUid(user.getUserAccount(),ords);
+			map = sose.queryOrderByOrderNumber(user.getUserAccount(),OrderNumber);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -93,12 +91,14 @@ public class SubmitOrderServlet extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		request.setAttribute("add", add);
-		request.setAttribute("adds", adds);
-		request.setAttribute("addr", addr);
-		request.setAttribute("map", map);
-		request.setAttribute("money", money);
-		request.setAttribute("count", count);
+		
+		//如果用request，则新增地址后，页面的参数全变为空，所以用session保存这些对象
+		session.setAttribute("add", add);
+		session.setAttribute("adds", adds);
+		session.setAttribute("addr", addr);
+		session.setAttribute("map", map);
+		session.setAttribute("money", money);
+		session.setAttribute("count", count);
 	    request.getRequestDispatcher("/dingDan/ddd.jsp").forward(request, response);
 	}
 	

@@ -20,7 +20,7 @@ public class OrderService {
 	}
 	
 	public int queryNumOfNotSend(User user) throws SQLException{
-		List<Order> olNotSend = dao.queryBySql("select * from [Order] where status = '待发货' and isCcancel = 'NO' and UserAccount = ?", user.getUserAccount());
+		List<Order> olNotSend = dao.queryBySql("select * from [Order] where status = '待发货' and isCancel = 'NO' and UserAccount = ?", user.getUserAccount());
 		System.out.println("olNotSend.size() = " + olNotSend.size());
 		return olNotSend.size();
 

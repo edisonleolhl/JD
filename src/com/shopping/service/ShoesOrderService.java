@@ -21,7 +21,7 @@ public class ShoesOrderService {
 	
 	public List<ShoesOrder> queryShoesOrderBySeller(String userAccount, String Seller) throws SQLException{
 		List<ShoesOrder> sol = dao.queryBySql(
-				"select * from ShoesOrder where OrderNumber is NULL anduserAccount=? and Seller=?", userAccount, Seller);
+				"select * from ShoesOrder where OrderNumber is NULL and userAccount=? and Seller=?", userAccount, Seller);
 		System.out.println("Seller = " + Seller + " ,shoesorderlist.size() = " + sol.size());
 		return sol;
 		
@@ -63,28 +63,29 @@ public class ShoesOrderService {
 		return dao.queryById(id);
 	}
 	
-	public Map<String,List<ShoesOrder>> queryOrderByUid(String uid,String ords) throws SQLException{
-		List<String> list = dao.querySellerByUid(uid,ords);
+	public Map<String,List<ShoesOrder>> queryOrderByOrderNumber(String userAccount,String OrderNumber) throws SQLException{
+		List<String> sellList = dao.querySellerByUid(userAccount, OrderNumber);
 		Map<String,List<ShoesOrder>> map = new HashMap<String,List<ShoesOrder>>();
-		for(String str : list){
-			List<ShoesOrder> list_ = dao.queryOrderBySeller(str, uid,ords);
-			map.put(str, list_);
+		for(String seller : sellList){
+			System.out.println("seller:" + seller);
+			List<ShoesOrder> sol = dao.queryOrderBySeller(seller, userAccount, OrderNumber);
+			map.put(seller, sol);
 		}
 		return map;
 	}
 	
-	public boolean UpdateOrderNumber(String num,int id) throws SQLException
+	public boolean UpdateOrderNumber(String OrderNumber,int id) throws SQLException
 	{
-		return dao.UpdateOrderNumber(num,id);
+		return dao.UpdateOrderNumber(OrderNumber,id);
 	}
 	
-	public double SelectTotalPrice(String num) throws SQLException
+	public double SelectTotalPrice(String OrderNumber) throws SQLException
 	{
-		return dao.SelectTotalPrice(num);
+		return dao.SelectTotalPrice(OrderNumber);
 	}
 	
-	public List<ShoesOrder> selectAmount(String num) throws SQLException
+	public List<ShoesOrder> selectAmount(String OrderNumber) throws SQLException
 	{
-		return dao.selectAmount(num);
+		return dao.selectAmount(OrderNumber);
 	}
 }

@@ -5,12 +5,6 @@
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
-	request.setAttribute("add", request.getAttribute("add"));
-	request.setAttribute("adds", request.getAttribute("adds"));
-	request.setAttribute("addr", request.getAttribute("addr"));
-	request.setAttribute("map", request.getAttribute("map"));
-	request.setAttribute("money", request.getAttribute("money"));
-	request.setAttribute("count", request.getAttribute("count"));
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -105,12 +99,12 @@
 	}
 
 	function AddInfo() {
-		var $name = $("#name").val();
+		var $receiveName = $("#name").val();
 		var $pp = $("[name=province]").val();
 		var $city = $("[name=city]").val();
 
-		$("[name=name]").val($name);
-		$("[name=provincial]").val($pp);
+		$("[name=receiveName]").val($receiveName);
+		$("[name=province]").val($pp);
 		$("[name=city]").val($city);
 	}
 </script>
@@ -689,8 +683,8 @@ a {
 
 <body>
 	<div id="box">
-		<img src="img/FFFFFF.png" id="img1"></img><br>
-		<br> <a id="lll">填写并核对订单信息</a>
+		<img src="img/FFFFFF.png" id="img1"></img><br> <br> <a
+			id="lll">填写并核对订单信息</a>
 		<div id="box2">
 			<!-- 填写并核对订单信息 -->
 
@@ -698,8 +692,8 @@ a {
 				<div id="box3_1">
 					<br>
 					<!-- 收信人 -->
-					<a id="box3_txt"><b>收货人信息</b>
-					</a> <a onClick="msgbox(1)" class="box3_txt1">新增收货地址 </a>
+					<a id="box3_txt"><b>收货人信息</b> </a> <a onClick="msgbox(1)"
+						class="box3_txt1">新增收货地址 </a>
 					<div id="showaddressdiv">
 						<ce:forEach items="${add }" var="a">
 							<div id="radio111111">
@@ -708,7 +702,8 @@ a {
 										value="${a.addressId }"> <a>${a.reName }
 											${a.province }</a> <span
 										style="float:right;margin-top:15px;display:none;"><img
-											src="img/gggggg.jpg"> </span></li>
+											src="img/gggggg.jpg"> </span>
+									</li>
 								</ul>
 							</div>
 
@@ -716,7 +711,8 @@ a {
 								<li class="getName">&nbsp;&nbsp;<a>${a.reName }</a> <a><span
 										class="getProv">${a.province }</span> <span class="getCity">${a.city
 											}</span> <span class="getArea">${a.area }</span> </a>&nbsp; <a>${a.phone
-										}</a></li>
+										}</a>
+								</li>
 							</ul>
 						</ce:forEach>
 					</div>
@@ -725,19 +721,21 @@ a {
 				<div id="box4_1">
 					<br>
 					<!-- 支付方式 -->
-					<a id="box4_txt"><b>支付方式</b>
-					</a>
+					<a id="box4_txt"><b>支付方式</b> </a>
 					<div id="radio_wrap">
 						<ul>
-							<li><a>货到付款</a><i></i></li>
-							<li class="c"><a>微信支付</a><i></i></li>
-							<li class="c"><a>京东支付</a><i></i></li>
-							<li id="ll"><a>在线支付</a><i></i></li>
+							<li><a>货到付款</a><i></i>
+							</li>
+							<li class="c"><a>微信支付</a><i></i>
+							</li>
+							<li class="c"><a>京东支付</a><i></i>
+							</li>
+							<li id="ll"><a>在线支付</a><i></i>
+							</li>
 						</ul>
 					</div>
 					<ul id="box4_ul1" style="list-style-type:none;float:left;">
-						<li>&nbsp;&nbsp;<a> 更多 </a>
-						</li>
+						<li>&nbsp;&nbsp;<a> 更多 </a></li>
 					</ul>
 				</div>
 				<!-- 支付方式 -->
@@ -746,8 +744,8 @@ a {
 					<br>
 					<!-- 送货清单 -->
 					<div id="ooo">
-						<a id="box5_txt"><b>送货清单</b>
-						</a> <a class="box5_txt2">价格说明</a> <a class="box5_txt1">返回修改购物车</a>
+						<a id="box5_txt"><b>送货清单</b> </a> <a class="box5_txt2">价格说明</a> <a
+							class="box5_txt1">返回修改购物车</a>
 					</div>
 					<!--  -----------------------循环，订单物品内容---------- -------------------- -->
 					<form action="<%=basePath%>payorder" method="post">
@@ -755,8 +753,8 @@ a {
 						<ce:forEach items="${map }" var="l">
 							<div id="box6" style="float:right;">
 								<div class="box7">
-									<br> <a id="shangjia"><b>商家：</b><b>${l.key }</b>
-									</a> <input type="hidden" value="${l.key }" name="seller">
+									<br> <a id="shangjia"><b>商家：</b><b>${l.key }</b> </a> <input
+										type="hidden" value="${l.key }" name="seller">
 									<ce:forEach items="${l.value }" var="va">
 										<input type="hidden" value="${va.id }" name="getid">
 										<div
@@ -780,11 +778,11 @@ a {
 										</div>
 									</ce:forEach>
 								</div>
-								<a id="xxx"><b>配送方式</b>
-								</a>
+								<a id="xxx"><b>配送方式</b> </a>
 								<div id="wwwwwwwwww">
 									<ul>
-										<li><a>快递运输</a><i></i></li>
+										<li><a>快递运输</a><i></i>
+										</li>
 									</ul>
 								</div>
 							</div>
@@ -801,11 +799,7 @@ a {
 						<!-- 添加订单备注 -->
 				</div>
 
-				<a id="box10_txt"><b> </b>
-				</a><br>
-				<br>
-				<br>
-				<br>
+				<a id="box10_txt"><b> </b> </a><br> <br> <br> <br>
 				<br>
 			</div>
 			<!-- 填写并核对订单信息 -->
@@ -813,7 +807,8 @@ a {
 		<div id="box11">
 			<ul style="list-style-type:none;">
 				<li id="boxa"><a id="a4">${count}</a><a>件商品，总商品金额：</a>&nbsp;&nbsp;&nbsp;&nbsp;<a>￥${money
-						}</a></li>
+						}</a>
+				</li>
 				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a>返现：</a>&nbsp;&nbsp;&nbsp;&nbsp;<a>￥0.00</a>
 				</li>
 				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a>运费：</a>&nbsp;&nbsp;&nbsp;&nbsp;<a>￥0.00</a>
@@ -823,11 +818,13 @@ a {
 		<div id="box12">
 			<ul style="list-style-type:none;">
 				<li id="boxa1"><a>应付总额：</a><a id="boxa2"><b>￥${money }</b>
-				</a></li>
+				</a>
+				</li>
 				<li id="li2"><a>寄送至：</a><a><span id="getProv">${adds.province
 							}</span> <span id="getCity">${adds.city }</span> <span id="getArea">${adds.area
 							}</span> </a>&nbsp;&nbsp;&nbsp;<a>收货人：</a><a><span id="getName">${adds.reName
-							}</span> <span id="getPhone">${adds.phone }</span> </a></li>
+							}</span> <span id="getPhone">${adds.phone }</span> </a>
+				</li>
 			</ul>
 			<div id="ss"></div>
 		</div>
@@ -860,8 +857,8 @@ a {
 					<span id="tis4" style="color:red;"></span>
 				</form>
 				<form action="/JD/AddAddress" method="post">
-					<input name="name" value="" type="hidden"> <input
-						name="provincial" value="" type="hidden"> <input
+					<input name="receiveName" value="" type="hidden"> <input
+						name="province" value="" type="hidden"> <input
 						name="city" value="" type="hidden"> <input
 						name="theHistoryRecord" type=hidden value="">
 					</p>
@@ -899,22 +896,19 @@ a {
 
 
 	<script type="text/javascript">
-(function() {
-    var radioWrap = document.getElementById("radio_wrap"),
-        li = radioWrap.getElementsByTagName("li");
-  
-    for(var i = 0; i < li.length; i++){
-        li[i].onclick = function() {
-            for(var i = 0; i < li.length; i++){
-                li[i].className = "";
-            }
-            this.className = "checked";
-        };
-    }
-})();
+		(function() {
+			var radioWrap = document.getElementById("radio_wrap"), li = radioWrap
+					.getElementsByTagName("li");
 
-
-
-</script>
+			for ( var i = 0; i < li.length; i++) {
+				li[i].onclick = function() {
+					for ( var i = 0; i < li.length; i++) {
+						li[i].className = "";
+					}
+					this.className = "checked";
+				};
+			}
+		})();
+	</script>
 </body>
 </html>

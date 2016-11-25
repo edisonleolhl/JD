@@ -34,21 +34,13 @@ public class AddAddress extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out=response.getWriter();
 		
-		request.setAttribute("add", request.getAttribute("add"));
-		request.setAttribute("adds", request.getAttribute("adds"));
-		request.setAttribute("addr", request.getAttribute("addr"));
-		request.setAttribute("map", request.getAttribute("map"));
-		request.setAttribute("money", request.getAttribute("money"));
-		request.setAttribute("count", request.getAttribute("count"));
-		
-		
-		String name=(String)request.getParameter("name");
+		String receiveName=(String)request.getParameter("receiveName");
 		HttpSession session=request.getSession();
 		User user = (User) session.getAttribute("USER");
 		String useraccount=user.getUserAccount();
-		String provincial=(String)request.getParameter("provincial");
+		String province=(String)request.getParameter("province");
 		String city=(String)request.getParameter("city");
-		if(provincial=="0" ||provincial.equals("0"))
+		if(province=="0" ||province.equals("0"))
 		{
 			out.write("<script>alert('请选择省份！');window.history.go(-1);</script>");
 			out.flush();
@@ -68,10 +60,10 @@ public class AddAddress extends HttpServlet {
 		Address ad=new Address ();
 		ad.setAddressId(0);
 		ad.setUserAccount(useraccount);
-		ad.setProvince(provincial);
+		ad.setProvince(province);
 		ad.setCity(city);
 		ad.setArea(area);
-		ad.setReName(name);
+		ad.setReName(receiveName);
 		if(phone=="" || phone.equals(""))
 		{
 			ad.setPhone(number);
