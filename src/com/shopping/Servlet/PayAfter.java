@@ -21,10 +21,7 @@ public class PayAfter extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");		
-		request.setCharacterEncoding("utf-8");
+
 		String orderId=request.getParameter("orderId"); 
 		String basePath = request.getScheme()+"://172.20.10.2:"
 				+ request.getServerPort() + request.getContextPath() +"/";

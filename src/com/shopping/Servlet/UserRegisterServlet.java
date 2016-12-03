@@ -23,9 +23,7 @@ public class UserRegisterServlet extends HttpServlet {
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		response.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
+
 		String account = request.getParameter("account");
 		String Userpwd = request.getParameter("Userpwd");
 		String checkpwd = request.getParameter("checkpwd");

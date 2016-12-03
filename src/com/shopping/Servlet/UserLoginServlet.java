@@ -21,33 +21,29 @@ public class UserLoginServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html;charset=UTF-8");
-		String accountOrPhone = request.getParameter("accountOrPhone");
-		String Userpwd = request.getParameter("Userpwd");
-		System.out.println("accountOrPhone = " + accountOrPhone);
-		System.out.println("Userpwd = " + Userpwd);
+
+		PrintWriter out=response.getWriter();
+		String userAccount = request.getParameter("userAccount");
+		String password = request.getParameter("password");
 		User u = null;
 		try {
-			u = us.loginByAccount(accountOrPhone, Userpwd);
+			u = us.loginByAccount(userAccount, password);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		PrintWriter out=response.getWriter();
 		if(u==null){
 			try {
-				u = us.loginByPhone(accountOrPhone, Userpwd);
+				u = us.loginByPhone(userAccount, password);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		if(u==null){
-			System.out.println("��");
-			out.write("<script>alert('��������ʺŻ��������������������룡');history.go(-1);</script>");
+			out.write("<script>alert('用户名或密码错误！');history.go(-1);</script>");
 		}
 		if(u!=null){
-			String flag=request.getParameter("isCheck");
-			if("yes".equals(flag)){
+			String autoLogin=request.getParameter("autoLogin");
+			if("yes".equals(autoLogin)){
 				Cookie cookie1 = new Cookie("USERACCOUNT", URLEncoder.encode(u.getUserAccount(), "UTF-8"));
 				Cookie cookie2 = new Cookie("USERPWD", URLEncoder.encode(u.getPassword(), "UTF-8"));
 				cookie1.setMaxAge(24*60*60);

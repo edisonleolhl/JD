@@ -3,8 +3,8 @@
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+	+ request.getServerName() + ":" + request.getServerPort()
+	+ path + "/";
 
 	String UserAccount="";
 	String Userpwd="";
@@ -13,15 +13,14 @@
 	Cookie[] cs=request.getCookies();
 	if(cs!=null){
 		for(Cookie c:cs){
-			if("USERACCOUNT".equals(c.getName())){
-				UserAccount = URLDecoder.decode(c.getValue(), "UTF-8");
-			}
-			if("USERPWD".equals(c.getName())){
-				Userpwd = URLDecoder.decode(c.getValue(), "UTF-8");
-			}
+	if("USERACCOUNT".equals(c.getName())){
+		UserAccount = URLDecoder.decode(c.getValue(), "UTF-8");
+	}
+	if("USERPWD".equals(c.getName())){
+		Userpwd = URLDecoder.decode(c.getValue(), "UTF-8");
+	}
 		}
-	}			
-
+	}
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -112,12 +111,13 @@
 	height: 35px;
 	border: 1px solid #BDBDBD;
 }
-.red{
-	color:#666666;
-	font-family:"微软雅黑";
-	font-size:13px;
-	margin-left:10px;
-	position:absolute;
+
+.red {
+	color: #666666;
+	font-family: "微软雅黑";
+	font-size: 13px;
+	margin-left: 10px;
+	position: absolute;
 }
 
 #b1 {
@@ -126,13 +126,15 @@
 	height: 35px;
 	border: 1px solid #BDBDBD;
 }
-.red1{
-	color:#666666;
-	font-family:"微软雅黑";
-	font-size:13px;
-	margin-left:10px;
-	position:absolute;
+
+.red1 {
+	color: #666666;
+	font-family: "微软雅黑";
+	font-size: 13px;
+	margin-left: 10px;
+	position: absolute;
 }
+
 #b-1 {
 	position: relative;
 	top: -1px;
@@ -149,8 +151,7 @@
 	herght: 25px;
 }
 
-#b-4 {
-	vertical-align: middle;
+#autoLogin {
 	margin-left: 25px;
 }
 
@@ -214,54 +215,50 @@
 </style>
 <script type="text/javascript" src="js/jquery-1.8.2.js"></script>
 <script type="text/javascript">
-function zhanghao()
-{
-	var $a=$("#b");
-	var $b=$("#DivEmail");
-	$b.html("");
-	if($a.val()=="")
-	{
-		$b.html("用户名不能为空!");
-		return false;
+	function zhanghao() {
+		var $a = $("#b");
+		var $b = $("#DivEmail");
+		$b.html("");
+		if ($a.val() == "") {
+			$b.html("用户名不能为空!");
+			return false;
+		}
+		if ($a.val().length > 20) {
+			$b.html("对不起，你的用户名过长");
+		}
+		return true;
 	}
-	if($a.val().length>20)
-	{
-		$b.html("对不起，你的用户名过长");
+	function MiMa() {
+
+		var $a = $("#b1");
+		var $b = $("#DivPW");
+		$b.html("");
+		if ($a.val() == "") {
+			$b.html("密码不能为空！");
+			return false;
+		}
+		if ($a.val().length < 6 || $a.val().length > 16) {
+			$b.html("密码必须大于6位数或小数等于16位数");
+			return false;
+		}
+		return true;
+
 	}
-	return true;
-}
-function MiMa()
-{
-	
-	var $a=$("#b1");
-	var $b=$("#DivPW");
-	$b.html("");
-	if($a.val()=="")
-	{
-		$b.html("密码不能为空！");
-		return false;
-	}
-	if($a.val().length<6||$a.val().length>16)
-	{
-		$b.html("密码必须大于6位数或小数等于16位数");
-		return false;
-	}
-	return true;
-	
-}
-/*失去焦点*/
-$(function(){
-	//绑定失去焦点事件
-	$("#b").blur(zhanghao);
-	$("#b1").blur(MiMa);
-	 //提交表单,调用验证函数
-	$("button").submit(function(){
-		var flag=false;
-		if(!zhanghao())flag=false;
-		if(!MiMa())flag=false;
-		return flag;
+	/*失去焦点*/
+	$(function() {
+		//绑定失去焦点事件
+		$("#b").blur(zhanghao);
+		$("#b1").blur(MiMa);
+		//提交表单,调用验证函数
+		$("button").submit(function() {
+			var flag = false;
+			if (!zhanghao())
+				flag = false;
+			if (!MiMa())
+				flag = false;
+			return flag;
+		});
 	});
-}); 
 </script>
 </head>
 
@@ -269,7 +266,9 @@ $(function(){
 	<!-- 头部 -->
 	<div id="last">
 		<div class="taobu">
-			<a href="<%=basePath %>/fristpage/search.jsp"><img src="dengluimg\dengru\TuPian1.PNG"></a>
+			<a href="<%=basePath%>/fristpage/search.jsp"><img
+				src="dengluimg\dengru\TuPian1.PNG">
+			</a>
 		</div>
 		<!-- 中间部分 -->
 		<div id="last1">
@@ -279,7 +278,8 @@ $(function(){
 			<div id="kuanjia">
 				<form name="loginForm" action="/JD/login.action" method="post">
 					<h3 style="color:#667db7;margin-left:10px;">京东会员</h3>
-					<a href="#" id="a"><img id="a1" src="dengluimg\dengru\TuPian3.PNG">立即注册</a>
+					<a href="#" id="a"><img id="a1"
+						src="dengluimg\dengru\TuPian3.PNG">立即注册</a>
 					<div id="a2">
 						<p id="a3">
 							<img id="a1" src="dengluimg\dengru\TuPian4.PNG">公共场所不建议自动登录，以防账号丢失
@@ -288,16 +288,17 @@ $(function(){
 
 					<div id="b-1-0">
 						<img id="b-1" src="dengluimg\dengru\TuPian5.PNG"> <input
-							type="text" placeholder="邮箱/用户名/已验证手机" name="accountOrPhone" id="b" value=<%=UserAccount %>>
-							<div class="red" id="DivEmail"></div>
-							<br /> <img
-							id="b-1" src="dengluimg\dengru\TuPian6.PNG"> <input
-							type="password" placeholder="密码" name="Userpwd" id="b1" value=<%=Userpwd %>>
-							<div class="red1" id="DivPW"></div>
+							type="text" placeholder="邮箱/用户名/已验证手机" name="userAccount"
+							id="b" value=<%=UserAccount%>>
+						<div class="red" id="DivEmail"></div>
+						<br /> <img id="b-1" src="dengluimg\dengru\TuPian6.PNG"> <input
+							type="password" placeholder="密码" name="password" id="b1"
+							value=<%=Userpwd%>>
+						<div class="red1" id="DivPW"></div>
 					</div>
 					<div id="b-1-1">
-						<input id="b-4" type="checkbox" name="isCheck" value="yes">
-						<label for="b-4">自动登录</label>
+						<input id="autoLogin" type="checkbox" name="autoLogin" value="yes">
+						<label for="autoLogin">自动登录</label> 
 						<a id="b-3" href="#">忘记密码?</a>
 					</div>
 					<div id="b-1-3">
@@ -327,7 +328,8 @@ $(function(){
 					<td><a href="#" id="c-1-4">销售联盟</a> |</td>
 					<td><a href="#" id="c-1-4">京东社区</a> |</td>
 					<td><a href="#" id="c-1-4"> 京东公益 </a> |</td>
-					<td><a href="#" id="c-1-4">English Site</a></td>
+					<td><a href="#" id="c-1-4">English Site</a>
+					</td>
 				</tr>
 			</table>
 			<div id="c-1-3">Copyright©2004-2016 京东JD.com 版权所有</div>

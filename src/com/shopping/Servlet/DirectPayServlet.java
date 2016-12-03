@@ -32,9 +32,6 @@ public class DirectPayServlet extends HttpServlet {
 	addrService adse=new addrService();
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		response.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
 		
 		PrintWriter out = response.getWriter();
 		HttpSession session=request.getSession();

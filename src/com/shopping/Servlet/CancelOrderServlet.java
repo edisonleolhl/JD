@@ -28,9 +28,6 @@ public class CancelOrderServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.setContentType("text/html;charset=UTF-8");
-		response.setCharacterEncoding("utf-8");
-		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("USER");
 		String OrderNumber = request.getParameter("OrderNumber");

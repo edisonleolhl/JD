@@ -16,13 +16,10 @@ public class DelShoesOrderServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		req.setCharacterEncoding("utf-8");
-		resp.setCharacterEncoding("utf-8");
-		resp.setContentType("text/html;charset=utf-8");
+
+		PrintWriter out = resp.getWriter();
 		int id = Integer.parseInt(req.getParameter("ShoesOrderid"));
 		System.out.println("id = " + id);
-		PrintWriter out = resp.getWriter();
 		try {
 			if(sos.delShoesOrder(id)){
 				out.write("<script>alert('delete success!');location.href='/JD/shoppingcar/GouWuChe.jsp';</script>");

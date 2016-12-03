@@ -24,10 +24,6 @@ public class PayOK extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		resp.setCharacterEncoding("utf-8");
-		resp.setContentType("text/html;charset=utf-8");
-		req.setCharacterEncoding("utf-8");
 	
 		String OrderNum=(String)req.getParameter("orderId");
 		System.out.println(OrderNum);

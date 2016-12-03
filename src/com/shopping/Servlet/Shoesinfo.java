@@ -42,7 +42,8 @@ public class Shoesinfo extends HttpServlet {
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-         int id=Integer.parseInt(request.getParameter("shoesid"));
+      
+		int id=Integer.parseInt(request.getParameter("shoesid"));
          
          
          //信息图片

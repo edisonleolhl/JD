@@ -27,23 +27,18 @@ public class SubmitOrderServlet extends HttpServlet {
 	ShoesOrderService sose=new ShoesOrderService();
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
+
 		submitOrder(request,response);
-		
-		
 	}
 	
 	public void submitOrder(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session=request.getSession();
-		
 
+		HttpSession session=request.getSession();
 		String strs[] = request.getParameterValues("sh");
 		ShoesOrder so=new ShoesOrder();
 		int count=0;
 		double money=0;
-		
 		
 		if(strs==null || strs.length==0)
 		{

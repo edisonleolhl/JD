@@ -26,9 +26,6 @@ public class ModifyShoesOrderAmountServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.setContentType("text/html;charset=UTF-8");
-		response.setCharacterEncoding("utf-8");
-		request.setCharacterEncoding("utf-8");
 		int id = Integer.parseInt(request.getParameter("id"));
 		System.out.println("id = " + id);
 		int newAmount = Integer.parseInt(request.getParameter("newAmount"));

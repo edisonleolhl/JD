@@ -28,12 +28,9 @@ public class Myservlet extends HttpServlet {
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		req.setCharacterEncoding("utf-8");
-		resp.setCharacterEncoding("utf-8");
-		resp.setContentType("text/html;charset=utf-8");
+
 		int currentPage = 1;
 		int pageSize = 20;
-		
 		
 		String input=req.getParameter("input");
 		
